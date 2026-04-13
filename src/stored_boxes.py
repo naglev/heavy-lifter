@@ -5,8 +5,11 @@ class StoredBoxes:
     def __getitem__(self, index):
         return self._state[index]
 
-    def show_state(self):
-        pass
+    def show_top_boxes(self):
+        output = ''
+        for stack in self._state:
+            output += stack[-1]
+        return output
 
     @property
     def state(self):
