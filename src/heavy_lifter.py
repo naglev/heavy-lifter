@@ -1,19 +1,22 @@
 import abc
 
+from src.stored_boxes import StoredBoxes
+from src.instruction import RobotInstructions, MovementInstruction
+
 
 class HeavyLifter(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def rearrange(self, boxes, instructions):
+    def rearrange(self, boxes: StoredBoxes, instructions: RobotInstructions)  -> None:
         raise NotImplementedError
 
 
 class HeavyLifterV1(HeavyLifter):
-    def rearrange(self, boxes, instructions):
+    def rearrange(self, boxes: StoredBoxes, instructions: RobotInstructions) -> None:
         while instructions:
             inst = instructions.next_instruction()
             self._execute(boxes, inst)
 
-    def _execute(self, boxes, instruction):
+    def _execute(self, boxes: StoredBoxes, instruction: MovementInstruction) -> None:
         for _ in range(instruction.number_of_boxes):
             try:
                 box = boxes[instruction.source_stack - 1].pop()
@@ -23,5 +26,5 @@ class HeavyLifterV1(HeavyLifter):
 
 
 class HeavyLifterV2(HeavyLifter):
-    def rearrange(self, boxes, instructions):
+    def rearrange(self, boxes: StoredBoxes, instructions: RobotInstructions) -> None:
         pass

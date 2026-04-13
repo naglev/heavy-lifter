@@ -9,12 +9,12 @@ class InstructionParser:
         self._stored_boxes: StoredBoxes | None = None
         self._instructions: RobotInstructions | None = None
 
-    def parse(self, content):
+    def parse(self, content: str):
         state_raw, instructions_raw = content.split('\n\n')
         self._stored_boxes = self._parse_state(state_raw)
         self._instructions = self._parse_instructions(instructions_raw)
         
-    def _parse_state(self, state_raw) -> StoredBoxes:
+    def _parse_state(self, state_raw: str) -> StoredBoxes:
         lines = self._split_lines(state_raw)
         stack_indexes = self._get_stack_indexes(lines[-2])
         stack_count = len(stack_indexes)
@@ -26,20 +26,21 @@ class InstructionParser:
         self._populate_stacks(stacks, stack_indexes, lines[:-2])
         return StoredBoxes(starting_state=stacks)
     
-    def _get_stack_indexes(self, stack_numbers_row) -> list[list]:
+    def _get_stack_indexes(self, stack_numbers_row: str) -> list[int]:
         stack_indexes = []
         for i, char in enumerate(stack_numbers_row):
             if char.isnumeric():
                 stack_indexes.append(i)
         return stack_indexes
 
-    def _populate_stacks(self, stacks, stack_indexes, state_lines):
+    def _populate_stacks(self, stacks: list[list[str]], stack_indexes: list[int], 
+                         state_lines: list[str]):
         for state_line in state_lines[::-1]:
             for i, stack_index in enumerate(stack_indexes):
                 if state_line[stack_index].isalpha():
                     stacks[i].append(state_line[stack_index])
         
-    def _parse_instructions(self, instructions_raw) -> RobotInstructions:
+    def _parse_instructions(self, instructions_raw: str) -> RobotInstructions:
         lines = self._split_lines(instructions_raw)
 
         instructions = RobotInstructions()

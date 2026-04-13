@@ -1,12 +1,12 @@
 class StoredBoxes:
-    def __init__(self, starting_state: list[list]):
+    def __init__(self, starting_state: list[list[str]]):
         self._state = starting_state
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> list[str]:
         return self._state[index]
 
     @property
-    def state(self) -> list[list]:
+    def state(self) -> list[list[str]]:
         return self._state
 
     @property
