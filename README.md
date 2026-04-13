@@ -51,3 +51,24 @@ After all instructions have been carried out, the boxes lie in the following sta
         |F| |U| |A| |T|
          1   2   3   4
             bottom
+
+## How to Start the Program
+
+The program can be run from the command line using its CLI interface.
+
+To start the program, open a terminal in this directory and run:
+
+    python app.py -is/--instruction-set <path_to_instruction_set_file> -hl/--heavy-lifter v1
+
+Replace `<path_to_instruction_set_file>` with the absolute path to your instruction set file.
+
+### Example
+
+    python app.py --instruction-set C:\files\instruction_set_01.txt --heavy-lifter v1
+
+This will process the instructions using the HeavyLifter v1 model.
+
+## Requirements
+
+This project was written and tested with **Python 3.12.0**.  
+Install Python 3.12.0 or higher before running the program.
