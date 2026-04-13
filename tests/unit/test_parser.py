@@ -22,7 +22,8 @@ def sample_data():
 move 1 from 3 to 4
 move 2 from 1 to 3
 move 1 from 1 to 2
-move 2 from 4 to 1"""
+move 2 from 4 to 1
+"""
 
 
 def test_instruction_parser_populates_stored_boxes(parser, sample_data):

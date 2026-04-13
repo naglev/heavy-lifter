@@ -46,6 +46,8 @@ class InstructionParser:
         pattern = re.compile(r'move (\d+) from (\d+) to (\d+)')
         for line in lines:
             match = re.search(pattern, line)
+            if not match:
+                break
             number_of_boxes, source_stack, destination_stack = match.groups()
             instruction = MovementInstruction(
                 int(number_of_boxes),
