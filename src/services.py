@@ -5,6 +5,13 @@ from src.heavy_lifter import HeavyLifter, HeavyLifterV1, HeavyLifterV2
 
 
 def do_the_heavy_lifting(file_path: Path, heavy_lifter_version: str) -> str:
+    """Serve as the use case of the program. Create the domain models and
+    coordinates them.
+
+    Args:
+        file_path: Path to the instruction set file.
+        heavy_lifter_version: The selected version of the heavy lifter.
+    """
     content = _read_file(file_path)
 
     parser = InstructionParser()
@@ -24,6 +31,11 @@ def _read_file(file_path: Path) -> str:
 
 
 def _create_heavy_lifter(version: str) -> HeavyLifter:
+    """Serve as a factory. Create the required version of the HeavyLifter.
+
+    Args:
+        version: Version of the HeavyLifter.
+    """
     # I could have created a HeavyLifterFactory class but
     # that would have been overkill for this task
     lifters = {
