@@ -1,4 +1,3 @@
-
 class StoredBoxes:
     """Represents the current state of all box stacks.
     """

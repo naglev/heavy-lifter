@@ -4,7 +4,6 @@ from src.stored_boxes import StoredBoxes
 from src.instruction import RobotInstructions, MovementInstruction
 
 
-
 class HeavyLifter(metaclass=abc.ABCMeta):
     """Abstract base class for heavy lifter implementations that rearrange boxes
     according to a set of movement instructions.
@@ -18,7 +17,6 @@ class HeavyLifter(metaclass=abc.ABCMeta):
             instructions: The queue of movement instructions to execute.
         """
         raise NotImplementedError
-
 
 
 class HeavyLifterV1(HeavyLifter):
@@ -49,7 +47,6 @@ class HeavyLifterV1(HeavyLifter):
             except IndexError:
                 return
             boxes[instruction.destination_stack - 1].append(box)
-
 
 
 class HeavyLifterV2(HeavyLifter):

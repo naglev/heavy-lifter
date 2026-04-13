@@ -2,7 +2,6 @@ from collections import deque
 from dataclasses import dataclass
 
 
-
 @dataclass
 class MovementInstruction:
     """Represents a single movement instruction for the robot, specifying
@@ -11,7 +10,6 @@ class MovementInstruction:
     number_of_boxes: int
     source_stack: int
     destination_stack: int
-
 
 
 class RobotInstructions:
